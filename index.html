@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulateur VAN | TRI | ROI | DR – réalisé par GRIDI SADDEK</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container py-16">
+        <header class="text-center mb-8">
+            <h1 class="main-title">Simulateur VAN | TRI | ROI | DR – réalisé par GRIDI SADDEK</h1>
+            <p class="subtitle">Simulateur financier extensible avec analyse automatique</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Section Paramètres d'Investissement -->
+            <section class="input-section">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Paramètres d'Investissement</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="form-group">
+                            <label for="investment" class="form-label">Investissement initial (DZD)</label>
+                            <input type="number" id="investment" class="form-control" value="1000000" min="1" step="1000" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rate" class="form-label">Taux d'actualisation (%)</label>
+                            <input type="number" id="rate" class="form-control" value="10" min="0" max="100" step="0.1" required />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Flux de Trésorerie -->
+            <section class="cashflow-section">
+                <div class="card">
+                    <div class="card__header">
+                        <div class="header-content">
+                            <h2>Flux de Trésorerie (<span id="year-count">7</span> années)</h2>
+                        </div>
+                        <div class="year-controls">
+                            <button type="button" id="add-year-btn" class="btn btn--secondary btn--sm year-btn add-btn">
+                                + Ajouter une année
+                            </button>
+                            <button type="button" id="remove-year-btn" class="btn btn--secondary btn--sm year-btn remove-btn">
+                                - Supprimer dernière année
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card__body">
+                        <div id="cashflow-grid" class="cashflow-grid">
+                            <!-- Les champs seront générés dynamiquement -->
+                        </div>
+
+                        <div class="calculate-section">
+                            <button type="button" id="calculate-btn" class="btn btn--primary btn--full-width calculate-button">
+                                Calculer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Résultats -->
+            <section class="results-section">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Résultats et Analyse Financière</h2>
+                    </div>
+                    <div class="card__body">
+                        <div class="results-grid">
+                            <div class="result-card">
+                                <div class="result-label">VAN (DZD)</div>
+                                <div id="van-value" class="result-value">—</div>
+                                <div id="van-interpretation" class="result-interpretation">En attente de calcul</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">TRI (%)</div>
+                                <div id="tri-value" class="result-value">—</div>
+                                <div id="tri-interpretation" class="result-interpretation">En attente de calcul</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">ROI (%)</div>
+                                <div id="roi-value" class="result-value">—</div>
+                                <div id="roi-interpretation" class="result-interpretation">En attente de calcul</div>
+                            </div>
+
+                            <div class="result-card highlight">
+                                <div class="result-label">DR Actualisé</div>
+                                <div id="dr-value" class="result-value">—</div>
+                                <div id="dr-interpretation" class="result-interpretation">En attente de calcul</div>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-section">
+                            <h3>Recommandation finale</h3>
+                            <div id="final-recommendation" class="recommendation-text">
+                                Cliquez sur "Calculer" pour obtenir une recommandation globale
+                            </div>
+                        </div>
+
+                        <div id="error-message" class="error-message hidden">
+                            Veuillez vérifier vos données saisies
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
